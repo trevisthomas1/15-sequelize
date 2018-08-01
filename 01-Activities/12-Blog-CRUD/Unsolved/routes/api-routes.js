@@ -14,7 +14,10 @@ module.exports = function(app) {
 
   // GET route for getting all of the posts
   app.get("/api/posts", function(req, res) {
-    // Add sequelize code to find all posts, and return them to the user with res.json
+    db.Post.findAll({})
+    .then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // Get route for returning posts of a specific category
